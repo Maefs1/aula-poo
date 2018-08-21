@@ -4,7 +4,7 @@ public class Exercicio7
 	{	
 		String name = args[0];
 		float grade[] = new float [3];
-		float summary;
+		float summary = 0;
 
 		for (int  i = 0; i < 3; i++)
 		{
@@ -16,7 +16,7 @@ public class Exercicio7
 		
 		System.out.print ("Nome do aluno: " + name);
 		System.out.print ("Media: " + summary);
-		if (summary >= 5,75)
+		if (summary >= 5.75)
 		{
 			System.out.print ("Situacao: Aprovado");
 		}else
