@@ -46,8 +46,13 @@ git config --global user.email
 ### Para mostrar o histórico dos comandos utilizados
 git log
 
-### Para apagar o arquivo ou página
-export PAGER=
-
 ### Para colar o endereço copiado
 Shift + Insert
+
+### Para enviar as alterações para o repositório remoto
+git push
+
+## Importante quando estiver na UNIVALI
+
+### Para apagar o arquivo ou página
+export PAGER=
