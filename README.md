@@ -38,3 +38,16 @@ ls -la
 
 ### Para abortar o Comandos
 Control + C
+
+### Para mostrar o nome ou mudar ele
+git config --global user.name
+git config --global user.email
+
+### Para mostrar o histórico dos comandos utilizados
+git log
+
+### Para apagar o arquivo ou página
+export PAGER=
+
+### Para colar o endereço copiado
+Shift + Insert
