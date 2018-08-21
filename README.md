@@ -83,7 +83,10 @@ git push
 ## Importante quando estiver na UNIVALI
 
 ### Para apagar o arquivo ou página
+```bash
 export PAGER=
+
+```
 
 ```java
 public void main (String args[])
