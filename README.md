@@ -58,3 +58,11 @@ git push
 
 ### Para apagar o arquivo ou página
 export PAGER=
+
+```java
+public void main (String args[])
+{
+	int i = 0;
+	i++;
+}
+```
