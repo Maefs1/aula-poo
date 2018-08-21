@@ -6,7 +6,9 @@ Repositório para manter os aruqivos da discilplina de POO
 ## Comandos importantes para lembrar
 
 ### Clona repositório
+```
 git clone {endereço}
+```
 
 ### Para adicionar arquivos no stage
 git add {nome do arquivo}
