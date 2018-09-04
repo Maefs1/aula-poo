@@ -63,12 +63,7 @@ public class Prova
     {
         this.nomeDisciplina = nomeDisciplina;
     }
-    
-    public void setNomeDisciplina (String nomeDisciplina)
-    {
-        this.nomeDisciplina = nomeDisciplina;
-    }
-    
+      
     public int getPeso()
     {
         return peso;

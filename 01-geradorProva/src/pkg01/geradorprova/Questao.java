@@ -9,17 +9,19 @@ package pkg01.geradorprova;
  *
  * @author mathe
  */
-public class Questao 
+abstract class Questao 
 {
     private String pergunta;
     private double peso;
     
+    abstract String retornaQuestao();
+            
     public String getPergunta()
     {
         return pergunta;
     }
     
-    public void setPergunt (String pergunta)
+    public void setPergunta (String pergunta)
     {
         this.pergunta = pergunta;
     }

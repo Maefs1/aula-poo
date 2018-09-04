@@ -13,6 +13,16 @@ final class Discursiva extends Questao
 {
     private String criteriosCorrecao;
     
+    @Override
+    public String retornaQuestao()
+    {
+        String questaoRetorno = "";
+        questaoRetorno += "- " + this.getPergunta() + " (" + this.getPeso() + "):" + '\n';
+                questaoRetorno += "R: " + this.getCriteriosCorrecao() + "\n\n";
+        return questaoRetorno;
+    } 
+            
+    
     public String getCriteriosCorrecao ()
     {
         return criteriosCorrecao;

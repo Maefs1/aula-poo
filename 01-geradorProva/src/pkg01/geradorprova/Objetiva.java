@@ -13,6 +13,18 @@ final class Objetiva extends Questao
 {
     private String[] opcoes;
     private int respostaCorreta;
+   
+    public String retornaQuestao()
+    {
+        String retornaQuestao = "";
+        String auxString = "";
+        
+        retornaQuestao += "- " + this.getPergunta() +" (" + this.getPeso() + "):" + '\n';
+                auxString = this.getOpcoes();
+                for(int j = 0; j < 5; j++)
+                    retornaQuestao += " (" + (j+1) + ") " + auxString[j] + '\n';
+                retornaQuestao += "R: " + this.questoesObjetivas[i].getRespostaCorreta() + "\n\n";
+    }
     
     public Objetiva ()
     {

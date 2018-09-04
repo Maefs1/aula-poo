@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author AndriyFujii
+ * @author math
  */
 public class GeradorProva {
 
