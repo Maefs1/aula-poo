@@ -1,129 +1,204 @@
 package pkg01.geradorprova;
 
-import java.util.Scanner;
+import java.nio.file.Paths;
+import java.io.IOException;
+import java.nio.file.Files;
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 /**
  *
- * @author math
+ * @author mathe
  */
-public class GeradorProva {
+public class GeradorProva
+{
+    public static float verificaFloat()
+    {
+        float n = 0;
+        boolean sair = false;
+        do
+        {
+            try
+            {
+                n = Float.parseFloat(JOptionPane.showInputDialog("Digite o peso da questão:"));
 
-    public static void main(String[] args) {
-        Prova prova = new Prova();
-        Scanner scannerAux = new Scanner(System.in);
-        
-        //Preenche o cabeçalho
-        System.out.println("Digite o nome da disciplina da prova: ");
-        prova.setNomeDisciplina(scannerAux.nextLine());
-        
-        System.out.println("Digite o local da prova:");
-        prova.setLocal(scannerAux.nextLine());
-        
-        System.out.println("Digite a data da prova:");
-        prova.setData(scannerAux.nextLine());
-        
-        System.out.println("Digite o peso da prova:");
-        while(!scannerAux.hasNextInt())
-        {
-            System.out.println("Erro. Digite um número inteiro.");
-            scannerAux.next();
-        }
-        prova.setPeso(scannerAux.nextInt());
-        scannerAux.nextLine();
-        
-        int tamanho;
-        
-        //Preenche as questões discursivas
-        System.out.println("Digite a quantidade de questões discursivas:");
-        while(!scannerAux.hasNextInt())
-        {
-            System.out.println("Erro. Digite um número inteiro.");
-            scannerAux.next();
-        }
-        tamanho = scannerAux.nextInt();
-        scannerAux.nextLine();
-        
-        Discursiva[] questoesDiscursivas = new Discursiva[tamanho];
-        for(int i = 0; i < tamanho; i++)
-        {
-            questoesDiscursivas[i] = new Discursiva();
-            
-            System.out.println("Digite a questão:");
-            questoesDiscursivas[i].setPergunta(scannerAux.nextLine());
-            
-            System.out.println("Digite o peso da questão:");
-            while(!scannerAux.hasNextDouble())
-            {
-                System.out.println("Erro. Digite um número inteiro ou decimal.");
-                scannerAux.next();
+                if(n <= 0)
+                    JOptionPane.showMessageDialog(null, 
+                            "Por favor, digite um número maior que zero.", 
+                            "Erro!", 
+                            JOptionPane.ERROR_MESSAGE);
+                else
+                    sair = true;
             }
-            questoesDiscursivas[i].setPeso(scannerAux.nextDouble());
-            scannerAux.nextLine();
-            
-            System.out.println("Digite os critérios de correção da questão:");
-            questoesDiscursivas[i].setCriteriosCorrecao(scannerAux.nextLine());
-        }
-        prova.setQuestoesDiscursivas(questoesDiscursivas);
-        
-        //Preenche as questões objetivas
-        System.out.println("Digite a quantidade de questões objetivas:");
-        while(!scannerAux.hasNextInt())
-        {
-            System.out.println("Erro. Digite um número inteiro.");
-            scannerAux.next();
-        }
-        tamanho = scannerAux.nextInt();
-        scannerAux.nextLine();
-        
-        Objetiva[] questoesObjetivas = new Objetiva[tamanho];
-        for(int i = 0; i < tamanho; i++)
-        {
-            questoesObjetivas[i] = new Objetiva();
-            
-            System.out.println("Digite a questão:");
-            questoesObjetivas[i].setPergunta(scannerAux.nextLine());
-            
-            System.out.println("Digite o peso da questão:");
-            while(!scannerAux.hasNextDouble())
+            catch(Exception e)
             {
-                System.out.println("Erro. Digite um número inteiro ou decimal.");
-                scannerAux.next();
+                JOptionPane.showMessageDialog(null, 
+                        "Por favor, digite um número inteiro ou decimal.", 
+                        "Erro!", 
+                        JOptionPane.ERROR_MESSAGE);
             }
-            questoesObjetivas[i].setPeso(scannerAux.nextDouble());
-            scannerAux.nextLine();
-            
-            System.out.println("Digite as cinco opções da pergunta");
-            String[] opcoes = new String[5];
-            for(int j = 0; j < opcoes.length; j++)
-            {
-                System.out.println("Opção "+ (j+1) +":");
-                opcoes[j] = scannerAux.nextLine();
-            }
-            questoesObjetivas[i].setOpcoes(opcoes);
-            
-            int auxInt;
-            do
-            {
-                System.out.println("Digite a alternativa correta (1 a 5):");
-                while(!scannerAux.hasNextInt())
-                {
-                    System.out.println("Erro. Digite um número inteiro ou decimal.");
-                    scannerAux.next();
-                }
-                auxInt = scannerAux.nextInt();
-                if(auxInt < 1 || auxInt > 5)
-                    System.out.println("Erro. Digite um número entre 1 e 5.");
-            }
-            while(auxInt < 1 || auxInt > 5);
-            questoesObjetivas[i].setRespostaCorreta(auxInt-1);
-            scannerAux.nextLine();
         }
-        scannerAux.close();
-        prova.setQuestoesObjetivas(questoesObjetivas);
-        
-        //Mostra a prova para impressão
-        System.out.println("\n\n" + prova.obtemDetalhes());
-        System.out.println(prova.obtemProvaImpressao());
+        while(!sair);
+        return n;
     }
     
+
+    public static String verificaString(String msg, String msgErro)
+    {
+        String retorno;
+        do
+        {
+            retorno = JOptionPane.showInputDialog(msg);
+            if(retorno == null || retorno.isEmpty())
+                JOptionPane.showMessageDialog(null, 
+                        msgErro, 
+                        "Erro!", 
+                        JOptionPane.ERROR_MESSAGE);
+        }
+        while(retorno == null || retorno.isEmpty());
+        return retorno;
+    }
+    
+    public static void main(String[] args)
+    {
+        Prova prova = new Prova();
+        
+        prova.setNomeDisciplina(verificaString("Digite o nome da disciplina:", 
+                "Por favor, digite o nome da disciplina."));
+        prova.setLocal(verificaString("Digite o local da prova:", 
+                "Por favor, digite o local da prova."));
+        prova.setData(verificaString("Digite a data da prova:", 
+                "Por favor, digite a data da prova."));
+        
+        boolean sair = false;
+        int intAux = 0;
+        do
+        {
+            try
+            {
+                intAux = Integer.parseInt(JOptionPane.showInputDialog("Digite o peso da prova:"));
+                
+                if(intAux <= 0)
+                    JOptionPane.showMessageDialog(null, 
+                            "Por favor, digite um número maior que zero.", 
+                            "Erro!", 
+                            JOptionPane.ERROR_MESSAGE);
+                else
+                    sair = true;
+            }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(null, 
+                        "Por favor, digite um número inteiro.", 
+                        "Erro!", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        while(!sair);
+        sair = false;
+        
+        prova.setPeso(intAux);
+        
+        ArrayList<Questao> listaQuestoes = new ArrayList();
+        
+        Object[] opcoes = {"Objetiva", "Discursiva", "Sair"};
+        do
+        {
+            intAux = JOptionPane.showOptionDialog(null, 
+                    "Escolha o tipo de questão:", 
+                    "Entrada" ,
+                    JOptionPane.YES_NO_CANCEL_OPTION, 
+                    JOptionPane.QUESTION_MESSAGE, 
+                    null, 
+                    opcoes, 
+                    opcoes[0]);
+            
+            switch(intAux)
+            {
+
+                case JOptionPane.NO_OPTION:
+                    Discursiva questaoDiscursiva = new Discursiva();
+                    
+                    questaoDiscursiva.setPergunta(verificaString("Digite a questão:", 
+                            "Por favor, digite a questão."));
+                    questaoDiscursiva.setPeso(verificaFloat());
+                    questaoDiscursiva.setCriteriosCorrecao(verificaString("Digite os critérios de correção:", 
+                            "Por favor, digite os critérios de correção."));
+                    
+                    listaQuestoes.add(questaoDiscursiva);
+                    break;
+
+                case JOptionPane.YES_OPTION:
+                    Objetiva questaoObjetiva = new Objetiva();
+                    
+                    questaoObjetiva.setPergunta(verificaString("Digite a questão:", 
+                            "Por favor, digite a questão."));
+                    questaoObjetiva.setPeso(verificaFloat());
+                    
+                    String[] stringAux = new String[5];
+                    for(int i = 0;i < stringAux.length; i++)
+                        stringAux[i] = verificaString("Opção " + (i+1) + ":", "Por favor, digite a alternativa.");
+                    questaoObjetiva.setOpcoes(stringAux);
+                    
+                    do
+                    {
+                        try
+                        {
+                        Integer[] possibilidades = {1, 2, 3, 4, 5};
+                            intAux = (Integer)JOptionPane.showInputDialog(null, 
+                                    "Digite a alternativa correta:", 
+                                    "Alternativa Correta", 
+                                    JOptionPane.PLAIN_MESSAGE, 
+                                    null, 
+                                    possibilidades, 
+                                    possibilidades[0]);
+                            sair = true;
+                        }
+                        catch(Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, 
+                                    "Por favor, escolha a alternativa correta.", 
+                                    "Erro!", 
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    while(!sair);
+                    sair = false;
+                    
+                    questaoObjetiva.setRespostaCorreta(intAux-1);
+                    
+                    listaQuestoes.add(questaoObjetiva);
+                    break;
+                default:
+                    sair = true;
+                    break;
+            }
+            
+        }
+        while(!sair);
+        
+        prova.setListaQuestoes(listaQuestoes);
+        
+
+        String salvar = prova.obtemProvaImpressao();
+        JOptionPane.showMessageDialog(null, 
+                salvar, 
+                "Prova para impressão", 
+                JOptionPane.PLAIN_MESSAGE);
+        
+
+        try
+        {
+            Files.write(Paths.get("prova.txt"), salvar.getBytes());
+            JOptionPane.showMessageDialog(null,
+                    "Prova salva em um arquivo de texto.");
+        }
+        catch(IOException e)
+        {
+            JOptionPane.showMessageDialog(null,
+                    "Não foi possível salvar a prova.",
+                    "Erro!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

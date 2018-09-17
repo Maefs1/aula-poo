@@ -5,6 +5,8 @@
  */
 package pkg01.geradorprova;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mathe
@@ -15,44 +17,31 @@ public class Prova
     private int peso;
     private String local;
     private String data;
-    private Objetiva [] questoesObjetivas;
-    private Discursiva [] questoesDiscursivas;
+    private ArrayList <Questao> listaQuestoes;
     
     public String obtemDetalhes ()
     {
         String retorno = "";
-        retorno += "Nome da disciplina: "+this.getNomeDisciplina()+'\n';
-        retorno += "Data da prova: "+this.getData() +'\n';
-        retorno += "Local da prova: "+this.getLocal() + '\n';
-        retorno += "Peso da prova: "+this.getPeso() + '\n';
+        retorno += "Nome da disciplina: " +this.getNomeDisciplina()+ "\r\n";
+        retorno += "Data da prova: " +this.getData() + "\r\n";
+        retorno += "Local da prova: " +this.getLocal() + "\r\n";
+        retorno += "Peso da prova: " +this.getPeso() + "\r\n";
+        retorno += "=========================================================================\r\n\n";
         
         return retorno;   
     }
     
     public String obtemProvaImpressao()
+    {
+        String retorno = this.obtemDetalhes();
+        
+        for (int i = 0; i < listaQuestoes.size(); i++)
         {
-            String retorno = "";
-            int contQuestao = 1;
-            
-            for (int i = 0; i < this.questoesDiscursivas.length; i++)
-            {
-                retorno += contQuestao + "- " + this.questoesDiscursivas[i].getPergunta() + " (" + this.questoesDiscursivas[i].getPeso() + "):" + '\n';
-                retorno += "R: " + this.questoesDiscursivas[i].getCriteriosCorrecao() + "\n\n";
-                contQuestao++;
-            }
-        String[] auxString = new String[5];
-            for(int i = 0; i < this.questoesObjetivas.length; i++)
-            {
-                retorno += contQuestao + "- " + this.questoesObjetivas[i].getPergunta() +" (" + this.questoesObjetivas[i].getPeso() + "):" + '\n';
-                auxString = this.questoesObjetivas[i].getOpcoes();
-                for(int j = 0; j < 5; j++)
-                    retorno += " (" + (j+1) + ") " + auxString[j] + '\n';
-                retorno += "R: " + this.questoesObjetivas[i].getRespostaCorreta() + "\n\n";
-                contQuestao++;
-            }
-            
-            return retorno;
+            retorno += this.listaQuestoes.get(i).retornaQuestao();
         }
+        
+        return retorno;
+    }
     
     public String getNomeDisciplina()
     {
@@ -94,24 +83,14 @@ public class Prova
         this.data = data;
     }
     
-    public Discursiva[] getQuestoesDiscursivas () 
+    public ArrayList <Questao> getListaQuestoes()
     {
-        return questoesDiscursivas;
+        return listaQuestoes;
     }
     
-    public void setQuestoesDiscursivas (Discursiva[] questoesDiscursivas)
+    public void setListaQuestoes (ArrayList <Questao> listaQuestoes)
     {
-        this.questoesDiscursivas = questoesDiscursivas;
-    }
-    
-    public Objetiva[] getQuestoesObjetivas () 
-    {
-        return questoesObjetivas;
-    }
-    
-    public void setQuestoesObjetivas(Objetiva[] questoesObjetivas) 
-    {
-        this.questoesObjetivas = questoesObjetivas;
-    }
+        this.listaQuestoes = listaQuestoes;
+    }   
 }
 
