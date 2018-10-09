@@ -1,0 +1,11 @@
+<resources>
+    <string name="phone">Phone</string>
+    <string name="mobile">Mobile</string>
+    <string name="email">Email</string>
+    <string name="home">Home</string>
+    <string name="phonetic_name">Phonetic name</string>
+    <string name="app_name">Interface</string>
+    <string name="saving_to">Saving to</string>
+    <string name="name">First name</string>
+    <string name="last_name">Last name</string>
+</resources>
