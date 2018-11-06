@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">05-controle-abastecimento</string>
+    <string name="autonomy">Autonomia atual</string>
+</resources>
