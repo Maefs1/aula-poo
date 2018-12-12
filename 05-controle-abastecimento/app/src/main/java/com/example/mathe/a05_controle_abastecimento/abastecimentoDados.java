@@ -1,5 +1,4 @@
-package luizz.aula.br.calculo_autonomia;
-
+package com.example.mathe.a05_controle_abastecimento;
 
 import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
@@ -71,12 +70,11 @@ public class abastecimentoDados extends AppCompatActivity {
                 item.setLatitude(l.getLatitude());
                 item.setLongitude(l.getLongitude());
             }else{
-//                item.setLatitude(Double.parseDouble(lt.getText().toString()));
-//                item.setLongitude(Double.parseDouble(lng.getText().toString()));
+
                 item.setLatitude(404);
                 item.setLongitude(404);
             }
-       }
+        }
 
         item.setData(data.getText().toString());
         item.setDistancia(Double.parseDouble(km.getText().toString()));

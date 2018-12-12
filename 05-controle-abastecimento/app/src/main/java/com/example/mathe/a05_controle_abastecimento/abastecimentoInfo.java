@@ -1,4 +1,4 @@
-package luizz.aula.br.calculo_autonomia;
+package com.example.mathe.a05_controle_abastecimento;
 
 import java.io.Serializable;
 

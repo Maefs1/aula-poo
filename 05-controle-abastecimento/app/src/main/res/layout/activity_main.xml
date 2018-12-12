@@ -18,7 +18,7 @@
         app:fab_size="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_book_open_page_variant_black_48dp" />
+        app:srcCompat="@drawable/format_list_bulleted" />
 
     <TextView
         android:id="@+id/textView5"

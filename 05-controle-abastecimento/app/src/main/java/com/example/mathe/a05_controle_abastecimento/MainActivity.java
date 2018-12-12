@@ -1,4 +1,4 @@
-package luizz.aula.br.calculo_autonomia;
+package com.example.mathe.a05_controle_abastecimento;
 
 import android.Manifest;
 import android.content.Intent;
@@ -23,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean permissao;
     int codigo = 2409;
 
-    //Não sei o porque, mas o programa não funciona em APIs acima de 27 pelo menos em alguns devices emulados no Android Studio
-    //Foi testado em 4 dispositivos reais diferentes e pelo menos nesses casos funcionou
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
             //pede permissao ao usuario
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        }
-        else{
+        } else {
             permissao = true;
         }
 
@@ -49,19 +45,19 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<abastecimentoInfo> dados = new ArrayList<abastecimentoInfo>();
         dados = abastecimentoDAO.carrega_Lista(this.getApplicationContext());
-        if(dados.size()>1){
-            double litrosTotal=0, distance, kmpL;
-            distance = dados.get(dados.size()-1).getDistancia() - dados.get(0).getDistancia();
+        if (dados.size() > 1) {
+            double litrosTotal = 0, distance, kmpL;
+            distance = dados.get(dados.size() - 1).getDistancia() - dados.get(0).getDistancia();
 
-            for(int i=0; i<dados.size()-1; i++){
+            for (int i = 0; i < dados.size() - 1; i++) {
                 litrosTotal += dados.get(i).getLitros();
             }
-            kmpL=distance/litrosTotal;
+            kmpL = distance / litrosTotal;
             NumberFormat numF = DecimalFormat.getInstance();
             numF.setMaximumFractionDigits(2);
             autonomia.setText(numF.format(kmpL));
-        }else{
-            autonomia.setText("----");
+        } else {
+            autonomia.setText("--");
         }
     }
 
@@ -79,36 +75,36 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onclick(View v){
+    public void onclick(View v) {
 
-       Intent trocar_act = new Intent(this.getApplicationContext(), abastecimentoLista.class);
-       trocar_act.putExtra("permissao", permissao);
-       startActivityForResult(trocar_act, codigo);
+        Intent trocar_act = new Intent(this.getApplicationContext(), abastecimentoLista.class);
+        trocar_act.putExtra("permissao", permissao);
+        startActivityForResult(trocar_act, codigo);
     }
 
-    protected void onActivityResult(int requestCode,int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode==codigo) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == codigo) {
             if (resultCode == 1) {
                 ArrayList<abastecimentoInfo> dados = new ArrayList<abastecimentoInfo>();
                 dados = abastecimentoDAO.carrega_Lista(this.getApplicationContext());
-                if(dados.size()>1){
-                    double litrosTotal=0, distance, kmpL;
-                    distance = dados.get(dados.size()-1).getDistancia() - dados.get(0).getDistancia();
+                if (dados.size() > 1) {
+                    double litrosTotal = 0, distance, kmpL;
+                    distance = dados.get(dados.size() - 1).getDistancia() - dados.get(0).getDistancia();
 
-                    for(int i=0; i<dados.size()-1; i++){
+                    for (int i = 0; i < dados.size() - 1; i++) {
                         litrosTotal += dados.get(i).getLitros();
                     }
-                    kmpL=distance/litrosTotal;
+                    kmpL = distance / litrosTotal;
                     NumberFormat numF = DecimalFormat.getInstance();
                     numF.setMaximumFractionDigits(2);
                     autonomia.setText(numF.format(kmpL));
                 }
-            }else{
+            } else {
                 Toast.makeText(this.getApplicationContext(), getString(R.string.error), Toast.LENGTH_LONG).show();
             }
-        }else{
-            Toast.makeText(this.getApplicationContext(),getString(R.string.error), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this.getApplicationContext(), getString(R.string.error), Toast.LENGTH_LONG).show();
         }
     }
 }

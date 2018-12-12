@@ -1,4 +1,4 @@
-package luizz.aula.br.calculo_autonomia;
+package com.example.mathe.a05_controle_abastecimento;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 public class abastecimentoLista extends AppCompatActivity {
 
-   private abastecimentoAdapter adaptador;
-   private final int codigo=2409;
-   private boolean permissao;
+    private abastecimentoAdapter adaptador;
+    private final int codigo=2409;
+    private boolean permissao;
 
 
     @Override
@@ -24,11 +24,11 @@ public class abastecimentoLista extends AppCompatActivity {
 
         RecyclerView rvLista = findViewById(R.id.recicleList);
 
-       this.adaptador = new abastecimentoAdapter();
-       this.adaptador.lista = abastecimentoDAO.carrega_Lista(this.getApplicationContext());
+        this.adaptador = new abastecimentoAdapter();
+        this.adaptador.lista = abastecimentoDAO.carrega_Lista(this.getApplicationContext());
 
-       rvLista.setAdapter(this.adaptador);
-       rvLista.setLayoutManager(new LinearLayoutManager(this.getApplicationContext()));
+        rvLista.setAdapter(this.adaptador);
+        rvLista.setLayoutManager(new LinearLayoutManager(this.getApplicationContext()));
     }
 
     public void onclickadd(View v){
@@ -61,7 +61,7 @@ public class abastecimentoLista extends AppCompatActivity {
         super.onActivityResult(requestCode,resultCode,data);
         if(requestCode==codigo) {
             if (resultCode == 1) {
-                  this.adaptador.notifyDataSetChanged();
+                this.adaptador.notifyDataSetChanged();
             }else{
                 Toast.makeText(this.getApplicationContext(), getString(R.string.errorNot), Toast.LENGTH_LONG).show();
             }
@@ -70,3 +70,4 @@ public class abastecimentoLista extends AppCompatActivity {
         }
     }
 }
+

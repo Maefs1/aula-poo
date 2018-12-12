@@ -1,4 +1,4 @@
-package luizz.aula.br.calculo_autonomia;
+package com.example.mathe.a05_controle_abastecimento;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -22,8 +22,8 @@ public class abastecimentoViewHolder extends RecyclerView.ViewHolder {
                 Intent openActiviy = new Intent(v.getContext(), abastecimentoDetalhe.class);
                 openActiviy.putExtra("registro", abastecimentoViewHolder.this.itemLook);
                 ((abastecimentoLista) v.getContext()).startActivity(openActiviy);
-        }
-    });
+            }
+        });
 
         this.tvkm = itemView.findViewById(R.id.distance_view);
         this.tvdata = itemView.findViewById(R.id.date_view);
@@ -47,6 +47,8 @@ public class abastecimentoViewHolder extends RecyclerView.ViewHolder {
             this.posto.setImageResource(R.drawable.shell);
         }else if(item.getPosto()==3){
             this.posto.setImageResource(R.drawable.texaco);
+        }else if(item.getPosto()==4){
+            this.posto.setImageResource(R.drawable.ic_gas_station_black_48dp);
         }else{
         }
     }

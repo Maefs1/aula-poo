@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">Controle de Abastecimento</string>
-    <string name="kilo">Quilometragem atual:</string>
+    <string name="kilo">Km atual:</string>
     <string name="save">Salvar</string>
     <string name="date">Data:</string>
     <string name="posto">Posto:</string>
@@ -13,19 +13,20 @@
     <string name="warningSave">Erro ao salvar</string>
     <string name="warningOver">Não pode inserir um valor igual ou menor ao anterior</string>
     <string name="NotingHere">Não há nenhum registro ainda</string>
-    <string name="GPSdisable">Recurso de mapa desativado, você não deu permissão para utilizar o GPS</string>
-    <string name="kiloEspc">Quilometragem:</string>
+    <string name="GPSdisable">Recurso de mapa desativado, não há permissão para utilizar o GPS</string>
+    <string name="kiloEspc">Km:</string>
     <string name="litrosEspc">Litros:</string>
     <string name="texaco">Texaco</string>
     <string name="ipiranga">Ipiranga</string>
     <string name="petro">Petrobras</string>
     <string name="shell">Shell</string>
-    <!--peguei de outra pessoa porque não estava conseguindo fazer-->
+    <string name="outro">Outro</string>
     <array name="lista_postos">
         <item>Petrobras</item>
         <item>Ipiranga</item>
         <item>Shell</item>
         <item>Texaco</item>
+        <item>Outro</item>
     </array>
 
 </resources>

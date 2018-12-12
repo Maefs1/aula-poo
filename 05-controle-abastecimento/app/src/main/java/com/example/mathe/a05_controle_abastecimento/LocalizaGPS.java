@@ -1,4 +1,4 @@
-package luizz.aula.br.calculo_autonomia;
+package com.example.mathe.a05_controle_abastecimento;
 
 import android.Manifest;
 import android.content.Context;
@@ -24,15 +24,15 @@ public class LocalizaGPS implements LocationListener {
             Toast.makeText(context, "Permissao nao consedida", Toast.LENGTH_LONG).show();
             return null;
         }
-            LocationManager lc = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
-            boolean isEnable = lc.isProviderEnabled(LocationManager.GPS_PROVIDER);
-            if(isEnable){
-                lc.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, this);
-                Location location = lc.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                return location;
-            }else{
-                Toast.makeText(context,"ative o GPS", Toast.LENGTH_LONG).show();
-            }
+        LocationManager lc = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+        boolean isEnable = lc.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if(isEnable){
+            lc.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, this);
+            Location location = lc.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            return location;
+        }else{
+            Toast.makeText(context,"ative o GPS", Toast.LENGTH_LONG).show();
+        }
         return null;
 
     }
@@ -59,3 +59,4 @@ public class LocalizaGPS implements LocationListener {
 
     }
 }
+

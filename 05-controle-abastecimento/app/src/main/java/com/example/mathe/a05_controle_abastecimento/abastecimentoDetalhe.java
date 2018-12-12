@@ -1,4 +1,4 @@
-package luizz.aula.br.calculo_autonomia;
+package com.example.mathe.a05_controle_abastecimento;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,6 +48,9 @@ public class abastecimentoDetalhe extends AppCompatActivity implements OnMapRead
         }else if(objeto.getPosto()==3){
             this.logo.setImageResource(R.drawable.texaco);
             nome_posto.setText(getString(R.string.texaco));
+        }else if(objeto.getPosto()==4){
+            this.logo.setImageResource(R.drawable.ic_gas_station_black_48dp);
+            nome_posto.setText(getString(R.string.outro));
         }
 
         dataView.setText(objeto.getData());
@@ -79,6 +82,8 @@ public class abastecimentoDetalhe extends AppCompatActivity implements OnMapRead
             posto = getString(R.string.shell);
         }else if(objeto.getPosto()==3){
             posto = getString(R.string.texaco);
+        }else if(objeto.getPosto()==4){
+            posto = getString(R.string.outro);
         }
 
         LatLng localizacao = new LatLng(this.objeto.getLatitude(), this.objeto.getLongitude());

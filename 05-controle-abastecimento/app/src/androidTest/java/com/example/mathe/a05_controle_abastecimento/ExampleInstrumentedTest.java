@@ -1,4 +1,4 @@
-package luizz.aula.br.calculo_autonomia;
+package com.example.mathe.a05_controle_abastecimento;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("luizz.aula.br.calculo_autonomia", appContext.getPackageName());
+        assertEquals("com.example.mathe.a05_controle_abastecimento", appContext.getPackageName());
     }
 }

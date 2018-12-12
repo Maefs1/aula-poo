@@ -1,4 +1,4 @@
-package luizz.aula.br.calculo_autonomia;
+package com.example.mathe.a05_controle_abastecimento;
 
 import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
@@ -60,6 +60,8 @@ public class Lista_de_Registros_Mapa extends AppCompatActivity implements OnMapR
                     posto = getString(R.string.shell);
                 }else if(dados.get(i).getPosto()==3){
                     posto = getString(R.string.texaco);
+                }else if(dados.get(i).getPosto()==4){
+                    posto = getString(R.string.outro);
                 }
                 LatLng localizacao = new LatLng(dados.get(i).getLatitude(), dados.get(i).getLongitude());
                 this.mMap.addMarker(new MarkerOptions().position(localizacao)
